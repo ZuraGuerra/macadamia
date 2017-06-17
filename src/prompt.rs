@@ -8,11 +8,18 @@ pub fn print_info() {
   println!("Press Ctrl+c to Exit");
 }
 
-pub fn output_prompt() {
-  write!(&mut io::stdout(), "><}}*> ");
-  io::stdout().flush();
+pub fn repl() {
+  loop {
+    let mut prompt = rustyline::Editor::<()>::new();
+    let input = prompt.readline("><}}*> ");
+
+    match input {
+      Ok(line) => print_input(line),
+      Err(_) => break,
+    }
+  }
 }
 
-pub fn print_input(input: String) {
+fn print_input(input: String) {
   writeln!(&mut io::stdout(), "><}}*< {:?}", input);
 }
