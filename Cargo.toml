@@ -1,0 +1,7 @@
+[package]
+name = "macadamia"
+version = "0.0.1"
+authors = ["Zura Guerra <hey@zura.space>"]
+
+[dependencies]
+rustyline = "1.0.0"
