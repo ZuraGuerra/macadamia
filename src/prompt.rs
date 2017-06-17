@@ -9,12 +9,15 @@ pub fn print_info() {
 }
 
 pub fn repl() {
+  let mut prompt = rustyline::Editor::<()>::new();
   loop {
-    let mut prompt = rustyline::Editor::<()>::new();
     let input = prompt.readline("><}}*> ");
 
     match input {
-      Ok(line) => print_input(line),
+      Ok(line) => {
+        prompt.add_history_entry(line.as_str());
+        print_input(line);
+      },
       Err(_) => break,
     }
   }
